@@ -30,11 +30,7 @@ local legendTab = Window:MakeTab({
   Icon = "rbxassetid://4483345998",
   PremiumOnly = false
 })
-local hatchTab = Window:MakeTab({
-  Name ="hatching ",
-  Icon = "rbxassetid://4483345998",
-  PremiumOnly = false
-})
+
 --section
 local Section = mainTab:AddSection({
   Name = "farm"
