@@ -648,3 +648,44 @@ wait()
       		print("button pressed")
   	end    
 })
+
+
+
+
+
+-- Variables
+local autoFarmOrbs = false
+
+-- Create a tab for farming options
+local FarmTab = Window:MakeTab({
+    Name = "Orbs",
+    Icon = "rbxassetid://4483345998",  -- You can set your own icon
+    PremiumOnly = false
+})
+
+-- Function to teleport to the orbs
+local function teleportToOrbs()
+    local rootpart = game.Players.LocalPlayer.Character.HumanoidRootPart
+    while autoFarmOrbs do
+        for _, v in pairs(workspace.orbFolder.City:GetDescendants()) do
+            if v:IsA("BasePart") then
+                rootpart.CFrame = v.CFrame
+            end
+        end
+        wait()
+    end
+end
+
+-- Toggle for auto farming orbs
+FarmTab:AddToggle({
+    Name = "Auto Farm Orbs",
+    Default = false,
+    Callback = function(value)
+        autoFarmOrbs = value
+        if autoFarmOrbs then
+            -- Start the teleportToOrbs function when the toggle is enabled
+            spawn(teleportToOrbs)
+        end
+    end
+})
+
